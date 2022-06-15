@@ -128,7 +128,7 @@ amlb.logger.setup(log_file=os.path.join(log_dir, '{script}.{now}.log'.format(scr
                   root_file=os.path.join(log_dir, '{script}.{now}.full.log'.format(script=script_name, now=now_str)),
                   root_level=log_levels.root, app_level=log_levels.app, console_level=log_levels.console, print_to_log=True)
 
-log.info("Running benchmark `%s` on `%s` framework in `%s` mode.", args.framework, args.benchmark, args.mode)
+log.info("Running benchmark `%s` on `%s` framework in `%s` mode.", args.benchmark, args.framework, args.mode)
 log.debug("Script args: %s.", args)
 
 config_default = config_load(os.path.join(default_dirs.root_dir, "resources", "config.yaml"))
