@@ -13,10 +13,12 @@ fi
 
 # Below fixes seg fault on MacOS due to bug in libomp: https://github.com/awslabs/autogluon/issues/1442
 if [[ -x "$(command -v brew)" ]]; then
-    brew uninstall -f libomp
-    wget https://raw.githubusercontent.com/Homebrew/homebrew-core/fb8323f2b170bd4ae97e1bac9bf3e2983af3fdb0/Formula/libomp.rb
-    brew install libomp.rb
-    rm libomp.rb
+    if [[ "$(brew list --versions libomp | cut -f 2 -d ' ')" != "11.1.0" ]]; then
+      brew uninstall -f libomp
+      wget https://raw.githubusercontent.com/Homebrew/homebrew-core/fb8323f2b170bd4ae97e1bac9bf3e2983af3fdb0/Formula/libomp.rb
+      brew install libomp.rb
+      rm libomp.rb
+    fi
 fi
 
 PIP install --upgrade pip -q
